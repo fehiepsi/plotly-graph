@@ -399,7 +399,7 @@ class PlotGraph:
                 for edge in self.G.edges()
             )
 
-        plotly_playout = {} if plotly_layout is None else plotly_layout
+        plotly_playout_dict = {} if plotly_layout is None else plotly_layout
         self.f = go.FigureWidget(
             data=[edge_trace, node_trace, middle_node_trace],
             layout=go.Layout(
@@ -411,7 +411,7 @@ class PlotGraph:
                 annotations=annotations,
                 xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                 yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                **plotly_layout,
+                **plotly_layout_dict,
             ),
         )
 

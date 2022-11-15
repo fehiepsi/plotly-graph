@@ -1,5 +1,4 @@
 from typing import List, Tuple, Union
-from warnings import warn
 
 import networkx as nx
 import plotly.graph_objects as go

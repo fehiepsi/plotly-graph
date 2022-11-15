@@ -137,12 +137,6 @@ def plot(
         Plotly figure of the graph
     """
 
-    warn(
-        "Argument `titlefont_size` is deprecated and will be removed in 0.6.0.",
-        FutureWarning,
-        stacklevel=2,
-    )
-
     plot = PlotGraph(G, layout)
 
     node_trace = plot.generate_node_traces(

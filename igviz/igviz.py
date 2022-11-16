@@ -362,7 +362,7 @@ class PlotGraph:
         transparent_background: bool,
         highlight_neighbours_on_hover: bool,
         figure_layout: dict,
-        node_layout: dict,
+        node_style: dict,
     ):
         """
         Helper function to generate the figure for the Graph.

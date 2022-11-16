@@ -26,7 +26,8 @@ def plot(
     arrow_size: int = 2,
     transparent_background: bool = True,
     highlight_neighbours_on_hover: bool = True,
-    plotly_layout=None,
+    figure_layout: dict = None,
+    node_style: dict = None,
 ):
     """
     Plots a Graph using Plotly.
@@ -166,7 +167,8 @@ def plot(
         arrow_size=arrow_size,
         transparent_background=transparent_background,
         highlight_neighbours_on_hover=highlight_neighbours_on_hover,
-        plotly_layout=plotly_layout,
+        figure_layout=figure_layout if figure_layout is not None else {},
+        node_style=node_style if node_style is not None else {},
     )
 
 
@@ -359,7 +361,8 @@ class PlotGraph:
         arrow_size: int,
         transparent_background: bool,
         highlight_neighbours_on_hover: bool,
-        plotly_layout,
+        figure_layout: dict,
+        node_layout: dict,
     ):
         """
         Helper function to generate the figure for the Graph.
@@ -399,7 +402,7 @@ class PlotGraph:
                 for edge in self.G.edges()
             )
 
-        plotly_playout_dict = {} if plotly_layout is None else plotly_layout
+        node_trace.update(**node_style)
         self.f = go.FigureWidget(
             data=[edge_trace, node_trace, middle_node_trace],
             layout=go.Layout(
@@ -411,7 +414,7 @@ class PlotGraph:
                 annotations=annotations,
                 xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                 yaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                **plotly_layout_dict,
+                **figure_layout,
             ),
         )
 
